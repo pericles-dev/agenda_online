@@ -12,6 +12,9 @@
         "psr-4": {
             "app\\system\\": "app/system",
             "app\\controllers\\": "app/controllers"
-        }
+        },
+        "files": [
+            "app/helpers/functions.php"
+        ]
     }
 }
