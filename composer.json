@@ -1,0 +1,16 @@
+{
+    "name": "psantos/projeto",
+    "description": "Agenda pessoal online.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Péricles Santos",
+            "email": "periclessantanadossantos@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            
+        }
+    }
+}
