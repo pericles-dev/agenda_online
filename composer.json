@@ -14,7 +14,8 @@
             "app\\controllers\\": "app/controllers"
         },
         "files": [
-            "app/helpers/functions.php"
+            "app/helpers/functions.php",
+            "app/config.php"
         ]
     }
 }
