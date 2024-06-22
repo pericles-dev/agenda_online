@@ -31,22 +31,58 @@
 }
 
 .hidden-menu {
-    height:  calc(50vh - 65px);
-    display: none;
+    height: 0px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #9ec23c;
+    background-color: #316456;
+    transition: height 0.3s;
+    overflow: hidden;
 }
 
 .hidden-menu ul {
     list-style: none;
 }
+
 .hidden-menu a {
     text-decoration: none;
     color: #fff;
     font-size: 1.5rem;
 }
 
-.flex {
+.show-menu {
     display: flex;
+    height: calc(50vh - 65px);
+}
+
+
+.container.form {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    padding: 20px 10px;
+    background-color: #f5ffbf;
+    height: calc(100vh - 65px);
+}
+
+.container.form label {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.input-title {
+    display: block;
+}
+
+.input-title+input {
+    width: 100%;
+    padding: 10px;
+}
+
+.container.form label+input {
+    background-color: #0A2740;
+    color: #9ec23c;
+    border: none;
+    padding: 10px;
+    font-size: 1.2rem;
 }
