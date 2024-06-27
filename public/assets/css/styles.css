@@ -86,3 +86,18 @@
     padding: 10px;
     font-size: 1.2rem;
 }
+
+.container.task {
+    padding: 10px;
+}
+
+.task_card {
+    border: #9ec23c 1px solid;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.task_title {
+    color: #316456;
+}

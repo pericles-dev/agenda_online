@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\system\Database;
 use app\controllers\BaseController;
 use app\models\UserModel;
+use app\models\TaskModel;
 
 class Main extends BaseController
 {
@@ -12,7 +13,16 @@ class Main extends BaseController
     public function home()
     {
         $this->view("layouts/header_template");
-        echo "<h1>Home</h1>";
+
+        $id = $_SESSION["user_id"];
+
+        $connection = new Database();
+
+        $model = new TaskModel;
+        $data = $model->select_all_tasks($connection, $id);
+
+        $this->view("to_do_list", $data);
+
         $this->view("layouts/footer_template");
     }
     public function login()
@@ -45,7 +55,7 @@ class Main extends BaseController
 
         $model = new UserModel;
         $data = $model->check_if_user_exists($connection, $params);
-        
+
         $_SESSION["user_id"] = $data[0]["id"];
         $_SESSION["username"] = $data[0]["nome_usuario"];
 
@@ -56,8 +66,6 @@ class Main extends BaseController
             redirect("/main", "Logado com sucesso");
             return;
         }
-
-
     }
 
     public function register_submit()
