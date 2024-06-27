@@ -22,7 +22,7 @@
     </div>
 
 <?php 
-    if(!isset($_SESSION["user_id"])) {
+    if(isset($_SESSION["user_id"])) {
         require_once "logged_menu.php";
     } else {
         require_once "unlogged_menu.php";

@@ -1,5 +1,5 @@
 <div class="container form">
-    <form action="/main/register_submit" method="post">
+    <form action="/user/register_submit" method="post">
         <?php check_errors()?>
         <label for="first_name">
             <span class="input-title">Nome:</span>

@@ -1,6 +1,6 @@
 <div class="hidden-menu">
         <ul>
-            <li><a href="/main/login">Entrar</a></li>
-            <li><a href="/main/register">Registrar</a></li>
+            <li><a href="/user/profile">Perfil</a></li>
+            <li><a href="/user/logout">Sair</a></li>
         </ul>
  </div>
