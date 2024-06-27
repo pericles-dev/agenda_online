@@ -1,6 +1,6 @@
 <div class="container form">
-    <form action="/main/login_submit" method="get">
-
+    <form action="/main/login_submit" method="POST">
+        <?php check_errors() ?>
         <label for="email">
             <span class="input-title">E-mail:</span>
             <input type="email" name="email" id="email">

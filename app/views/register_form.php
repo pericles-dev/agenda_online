@@ -1,5 +1,6 @@
 <div class="container form">
     <form action="/main/register_submit" method="post">
+        <?php check_errors()?>
         <label for="first_name">
             <span class="input-title">Nome:</span>
             <input type="text" name="first_name" id="first_name">
@@ -30,7 +31,7 @@
                 Feminino:
                 <input type="radio" name="gender" value="f">
             </span>
-            
+
         </label>
 
         <label for="email">

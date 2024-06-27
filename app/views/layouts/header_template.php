@@ -20,9 +20,11 @@
             </div>
         </nav>
     </div>
-    <div class="hidden-menu">
-        <ul>
-            <li><a href="/main/login">Entrar</a></li>
-            <li><a href="/main/register">Registrar</a></li>
-        </ul>
-    </div>
+
+<?php 
+    if(!isset($_SESSION["user_id"])) {
+        require_once "logged_menu.php";
+    } else {
+        require_once "unlogged_menu.php";
+    }
+?>
