@@ -1,5 +1,5 @@
 <div class="container form">
-    <form action="/user/login" method="get">
+    <form action="/main/login_submit" method="get">
 
         <label for="email">
             <span class="input-title">E-mail:</span>

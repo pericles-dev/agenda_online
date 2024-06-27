@@ -1,5 +1,5 @@
 <div class="container form">
-    <form action="/user/register" method="post">
+    <form action="/main/register_submit" method="post">
         <label for="first_name">
             <span class="input-title">Nome:</span>
             <input type="text" name="first_name" id="first_name">
@@ -24,11 +24,11 @@
             <span class="input-title">Gênero:</span>
             <span>
                 Masculino:
-                <input type="radio" name="gender" value="male">
+                <input type="radio" name="gender" value="m">
             </span>
             <span>
                 Feminino:
-                <input type="radio" name="gender" value="female">
+                <input type="radio" name="gender" value="f">
             </span>
             
         </label>

@@ -12,7 +12,7 @@ class Database
     private $password;
     private $database;
 
-    public function __construct($host, $username, $password, $database)
+    public function __construct($host=HOST, $username=USERNAME, $password=PASSWORD, $database=DATABASE)
     {
         $this->host = $host;
         $this->username = $username;
@@ -29,7 +29,7 @@ class Database
             echo "<pre>";
             var_dump($error);
         }
-        echo "conexão";
+
         return $connection;
     }
 }
