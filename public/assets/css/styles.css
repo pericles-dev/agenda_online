@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #f5ffbf;
+    ;
+}
+
 .container.header {
     background-color: #0A2740;
     padding: 10px 20px;
@@ -93,12 +98,33 @@
 
 .task_card {
     border: #9ec23c 1px solid;
+    background-color: #316456;
     border-radius: 3px;
     padding: 10px;
     margin-bottom: 15px;
 }
 
+.task_date {
+    color: #ecfd00;
+}
+
 .task_title {
-    color: #316456;
+    color: #fff;
     padding-bottom: 5px;
+}
+
+.task_description {
+    padding-top: 10px;
+    color: #f5ffbf;
+}
+
+.new_task_button {
+    width: fit-content;
+    background-color: #0A2740;
+    color: #9ec23c;
+    padding: 10px;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    display: block;
+    text-decoration: none;
 }

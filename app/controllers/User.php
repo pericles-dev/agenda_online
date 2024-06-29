@@ -10,6 +10,8 @@ class User extends BaseController
 {
     public function login()
     {
+        check_if_user_is_logged();
+
         $this->view("layouts/header_template");
         $this->view("login_form");
         $this->view("layouts/footer_template");
@@ -17,6 +19,8 @@ class User extends BaseController
 
     public function register()
     {
+        check_if_user_is_logged();
+
         $this->view("layouts/header_template");
         $this->view("register_form");
         $this->view("layouts/footer_template");
@@ -24,14 +28,16 @@ class User extends BaseController
 
     public function login_submit()
     {
+        check_if_user_is_logged();
+
         $email = $_POST["email"];
-        $senha = $_POST["password"];
+        $password = $_POST["password"];
 
         //Validação pendente
 
         $params = [
             "email" => $email,
-            "senha" => $senha
+            "password" => $password
         ];
 
         $connection = new Database();
@@ -40,10 +46,10 @@ class User extends BaseController
         $data = $model->check_if_user_exists($connection, $params);
 
         $_SESSION["user_id"] = $data[0]["id"];
-        $_SESSION["username"] = $data[0]["nome_usuario"];
+        $_SESSION["username"] = $data[0]["username"];
 
         unset($data);
-        dd($_SESSION);
+       # dd($_SESSION);
 
         if (isset($_SESSION["user_id"])) {
             redirect("/", "Logado com sucesso");
@@ -54,22 +60,24 @@ class User extends BaseController
     public function register_submit()
     {
 
-        $nome = $_POST["first_name"];
-        $sobrenome = $_POST["last_name"];
-        $username = $_POST["username"];
-        $data_nascimento  = $_POST["birthdate"];
-        $genero = $_POST["gender"];
-        $email = $_POST["email"];
-        $confirmar_email = $_POST["confirm_email"];
-        $senha = $_POST["password"];
-        $confirmar_senha = $_POST["confirm_password"];
+        check_if_user_is_logged();
 
-        if (!(strlen($nome) >= 3)) {
+        $first_name = $_POST["first_name"];
+        $last_name = $_POST["last_name"];
+        $username = $_POST["username"];
+        $birthdate  = $_POST["birthdate"];
+        $gender = $_POST["gender"];
+        $email = $_POST["email"];
+        $confirm_email = $_POST["confirm_email"];
+        $password = $_POST["password"];
+        $confirm_password = $_POST["confirm_password"];
+
+        if (!(strlen($first_name) >= 3)) {
             redirect("/user/register", "O nome deve ter a partir de 3 caracteres.");
             return;
         }
 
-        if (!(strlen($sobrenome) >= 3)) {
+        if (!(strlen($last_name) >= 3)) {
             redirect("/user/register", "O sobrenome deve ter a partir de 3 caracteres.");
             return;
         }
@@ -79,24 +87,24 @@ class User extends BaseController
             return;
         }
 
-        if ($email != $confirmar_email) {
+        if ($email != $confirm_email) {
             redirect("/user/register", "Os E-mails não são iguais.");
             return;
         }
 
-        if ($senha != $confirmar_senha) {
+        if ($password != $confirm_password) {
             redirect("/user/register", "As Senhas não são iguais.");
             return;
         }
 
         $params = [
-            "nome" => $nome,
-            "sobrenome" => $sobrenome,
-            "nome_usuario" => $username,
-            "data_nascimento" => $data_nascimento,
-            "genero" => $genero,
+            "first_name" => $first_name,
+            "last_name" => $last_name,
+            "username" => $username,
+            "birthdate" => $birthdate,
+            "gender" => $gender,
             "email" => $email,
-            "senha" => password_hash($senha, PASSWORD_DEFAULT)
+            "password" => password_hash($password, PASSWORD_DEFAULT)
         ];
 
 

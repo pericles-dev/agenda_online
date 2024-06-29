@@ -10,7 +10,7 @@ class TaskModel
 
     public function select_all_tasks(Database $connection, $id)
     {
-        $sql = "SELECT * FROM tarefas WHERE user_id = ?";
+        $sql = "SELECT * FROM tasks WHERE user_id = ?";
 
         $database = $connection->create_connection();
         $stmt = $database->prepare($sql);
@@ -20,5 +20,23 @@ class TaskModel
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $data;
+    }
+
+    public function add_new_task(Database $connection, $params)
+    {
+
+        $sql = "INSERT INTO tasks VALUES ('0', ?, ?, ?, ?, ?, NOW(), NOW(), NULL)";
+
+        $database = $connection->create_connection();
+        $stmt = $database->prepare($sql);
+        $stmt->bindParam(1, $params["user_id"]);
+        $stmt->bindParam(2, $params["task_name"]);
+        $stmt->bindParam(3, $params["task_description"]);
+        $stmt->bindParam(4, $params["task_date"]);
+        $stmt->bindParam(5, $params["task_hour"]);
+
+        $stmt->execute();
+
+ 
     }
 }
