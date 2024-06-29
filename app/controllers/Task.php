@@ -10,6 +10,7 @@ class Task extends BaseController
 {
     public function show_tasks()
     {
+
         $this->view("layouts/header_template");
 
         $id = $_SESSION["user_id"];
@@ -25,6 +26,7 @@ class Task extends BaseController
 
     public function add_task()
     {
+        check_if_user_is_logged();
         $this->view("layouts/header_template");
         $this->view("add_task_form");
         $this->view("layouts/footer_template");
@@ -41,22 +43,22 @@ class Task extends BaseController
 
 
         if ($user_id != $_SESSION["user_id"]) {
-            redirect("/task/add_task", "O id do usuário é inválido");
+            redirect("/task/edit_task", "O id do usuário é inválido");
             return;
         }
 
         if (strlen($task_name) < 6) {
-            redirect("/task/add_task", "O nome da tarefa deve ter no mínimo 6 caracteres");
+            redirect("/task/edit_task/", "O nome da tarefa deve ter no mínimo 6 caracteres");
             return;
         }
 
         if (strlen($task_description) < 6) {
-            redirect("/task/add_task", "A descrição da tarefa deve ter no mínimo 6 caracteres");
+            redirect("/task/edit_task", "A descrição da tarefa deve ter no mínimo 6 caracteres");
             return;
         }
 
         if (empty($task_date)) {
-            redirect("/task/add_task", "Insira uma data válida");
+            redirect("/task/edit_task", "Insira uma data válida");
         }
 
         $params = [
@@ -67,12 +69,62 @@ class Task extends BaseController
             "task_hour" => $task_hour
         ];
 
-        dd($params);
+        $connection = new Database();
+
+        $model = new TaskModel();
+        $model->update_task($connection, $params);
+
+        redirect("/", "");
+    }
+
+    public function edit_task($id)
+    {
+        $connection = new Database();
+
+        $model = new TaskModel();
+        $data = $model->select_task_data($connection, $id);
+
+        $this->view("layouts/header_template",);
+        $this->view("edit_task_form", $data);
+        $this->view("layouts/footer_template");
+    }
+
+    public function edit_task_submit()
+    {
+
+        $id = $_POST["id"];
+        $task_name = $_POST["task_name"];
+        $task_description = $_POST["task_description"];
+        $task_date = $_POST["task_date"];
+        $task_hour = $_POST["task_hour"];
+
+        if (strlen($task_name) < 6) {
+            redirect("/task/edit_task/$id", "O nome da tarefa deve ter no mínimo 6 caracteres");
+            return;
+        }
+
+        if (strlen($task_description) < 6) {
+            redirect("/task/edit_task/$id", "A descrição da tarefa deve ter no mínimo 6 caracteres");
+            return;
+        }
+
+        if (empty($task_date)) {
+            redirect("/task/edit_task/$id", "Insira uma data válida");
+        }
+
+
+        $params = [
+            "id" => $id,
+            "task_name" => $task_name,
+            "task_description" => $task_description,
+            "task_date" => $task_date,
+            "task_hour" => $task_hour
+        ];
 
         $connection = new Database();
 
         $model = new TaskModel();
-        $model->add_new_task($connection, $params);
+        $model->update_task($connection, $params);
 
         redirect("/", "");
     }
