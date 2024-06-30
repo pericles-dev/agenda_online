@@ -10,7 +10,6 @@ class User extends BaseController
 {
     public function login()
     {
-        check_if_user_is_logged();
 
         $this->view("layouts/header_template");
         $this->view("login_form");
@@ -19,7 +18,6 @@ class User extends BaseController
 
     public function register()
     {
-        check_if_user_is_logged();
 
         $this->view("layouts/header_template");
         $this->view("register_form");
@@ -28,7 +26,6 @@ class User extends BaseController
 
     public function login_submit()
     {
-        check_if_user_is_logged();
 
         $email = $_POST["email"];
         $password = $_POST["password"];
@@ -49,7 +46,6 @@ class User extends BaseController
         $_SESSION["username"] = $data[0]["username"];
 
         unset($data);
-       # dd($_SESSION);
 
         if (isset($_SESSION["user_id"])) {
             redirect("/", "Logado com sucesso");
@@ -60,7 +56,6 @@ class User extends BaseController
     public function register_submit()
     {
 
-        check_if_user_is_logged();
 
         $first_name = $_POST["first_name"];
         $last_name = $_POST["last_name"];

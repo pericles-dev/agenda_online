@@ -19,12 +19,12 @@ function check_errors()
     }
 }
 
-function check_if_user_is_logged()
-{
-    if (isset($_SESSION["user_id"])) {
-        redirect("/", "");
-    }
-}
+// function check_if_user_is_logged()
+// {
+//     if (isset($_SESSION["user_id"])) {
+//         redirect("/", "");
+//     }
+// }
 
 function dd($variable)
 {

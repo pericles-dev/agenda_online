@@ -20,13 +20,12 @@ class Task extends BaseController
         $model = new TaskModel;
         $data = $model->select_all_tasks($connection, $id);
 
-        $this->view("to_do_list", $data);
+        $this->view("tasks_list", $data);
         $this->view("layouts/footer_template");
     }
 
     public function add_task()
     {
-        check_if_user_is_logged();
         $this->view("layouts/header_template");
         $this->view("add_task_form");
         $this->view("layouts/footer_template");
@@ -72,7 +71,7 @@ class Task extends BaseController
         $connection = new Database();
 
         $model = new TaskModel();
-        $model->update_task($connection, $params);
+        $model->add_new_task($connection, $params);
 
         redirect("/", "");
     }
@@ -125,6 +124,25 @@ class Task extends BaseController
 
         $model = new TaskModel();
         $model->update_task($connection, $params);
+
+        redirect("/", "");
+    }
+
+    public function delete_task($id)
+    {
+        $data = ["id" => $id];
+
+        $this->view("layouts/header_template");
+        $this->view("delete_task", $data);
+        $this->view("layouts/footer_template");
+    }
+
+    public function delete_task_confirm($id){
+        $params = ["id" => $id];
+
+        $connection = new Database();
+        $model = new TaskModel;
+        $model->delete_task($connection, $params);
 
         redirect("/", "");
     }

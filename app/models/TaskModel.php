@@ -54,7 +54,7 @@ class TaskModel
 
     public function update_task(Database $connection, $params)
     {
-        $sql = "UPDATE tasks SET task_name = ?, task_description = ?, task_date = ?, task_hour = ? WHERE id = ?";
+        $sql = "UPDATE tasks SET task_name = ?, task_description = ?, task_date = ?, task_hour = ?, updated_at = NOW() WHERE id = ?";
 
         $database = $connection->create_connection();
         $stmt = $database->prepare($sql);
@@ -66,6 +66,18 @@ class TaskModel
         $stmt->bindParam(5, $params["id"]);
 
         $stmt->execute();
+    }
 
+    public function delete_task(Database $connection, $params)
+    {
+
+        $sql = "DELETE FROM tasks WHERE id = ?";
+
+        $database = $connection->create_connection();
+        $stmt = $database->prepare($sql);
+
+        $stmt->bindParam(1, $params["id"]);
+
+        $stmt->execute();
     }
 }
