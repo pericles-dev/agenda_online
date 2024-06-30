@@ -1,59 +1,62 @@
-<div class="container form">
-    <form action="/user/register_submit" method="post">
-        <?php check_errors()?>
-        <label for="first_name">
-            <span class="input-title">Nome:</span>
-            <input type="text" name="first_name" id="first_name">
+<form action="/user/register_submit" method="POST" class="form">
+    <fieldset>
+        <legend>Registrar</legend>
+
+        <label class="form-label">
+            <span>Nome:</span>
+            <input type="text" class="form-input" name="first_name" placeholder="maria">
         </label>
 
-        <label for="last_name">
-            <span class="input-title">Sobrenome:</span>
-            <input type="text" name="last_name" id="last_name">
+        <label class="form-label">
+            <span>Sobrenome:</span>
+            <input type="text" class="form-input" name="last_name" placeholder="helena">
         </label>
 
-        <label for="username">
-            <span class="input-title">Usuário:</span>
-            <input type="text" name="username" id="user_name">
+
+        <label class="form-label">
+            <span>Nome de usuário:</span>
+            <input type="text" class="form-input" name="username" placeholder="maria.h">
         </label>
 
-        <label for="birthdate">
-            <span class="input-title">Data de nascimento:</span>
-            <input type="date" name="birthdate" id="birthdate">
+        <label class="form-label">
+            <span>Data de nascimento:</span>
+            <input type="date" class="form-input" name="birthdate">
         </label>
 
-        <label>
-            <span class="input-title">Gênero:</span>
-            <span>
-                Masculino:
-                <input type="radio" name="gender" value="m">
-            </span>
-            <span>
-                Feminino:
-                <input type="radio" name="gender" value="f">
-            </span>
+        <label class="form-label">
+            <span>Gênero:</span>
+                <label class="form-label r">
+                    Masculino:
+                    <input type="radio" name="gender" value="m">
+                </label>
 
+                <label class="form-label r">
+                    Feminino:
+                    <input type="radio" name="gender" value="f">
+                </label>
         </label>
 
-        <label for="email">
-            <span class="input-title">E-mail:</span>
-            <input type="email" name="email" id="email">
+        <label class="form-label">
+            <span>E-mail:</span>
+            <input type="email" class="form-input" name="email" placeholder="maria@email.exemplo">
         </label>
 
-        <label for="confirm_email">
-            <span class="input-title">Confirmar E-mail:</span>
-            <input type="email" name="confirm_email" id="confirm_email">
+        <label class="form-label">
+            <span>Confirmar E-mail:</span>
+            <input type="email" class="form-input" name="confirm_email" placeholder="maria@email.exemplo">
         </label>
 
-        <label for="password">
-            <span class="input-title">Senha:</span>
-            <input type="password" name="password" id="password">
+        <label class="form-label">
+            <span>Senha:</span>
+            <input type="password" class="form-input" name="password">
         </label>
 
-        <label for="confirm_password">
-            <span class="input-title">Confirmar Senha:</span>
-            <input type="password" name="confirm_password" id="confirm_password">
+
+        <label class="form-label">
+            <span>Confirmar Senha:</span>
+            <input type="password" class="form-input" name="confirm_password">
         </label>
 
-        <input type="submit" value="Registrar">
-    </form>
-</div>
+        <input type="submit" class="button" value="Registrar">
+    </fieldset>
+</form>

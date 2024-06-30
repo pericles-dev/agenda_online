@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url("../fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,131 +10,147 @@
 }
 
 body {
-    background-color: #f5ffbf;
-    ;
+    font-family: "Montserrat";
 }
 
-.container.header {
-    background-color: #0A2740;
-    padding: 10px 20px;
+.container {
+    height: 100vh;
+    padding: 10px;
+}
+
+.navbar {
+    padding: 20px 0 ;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logo {
-    height: 40px;
-}
-
-.logo a {
+.navbar a {
     text-decoration: none;
-    font-size: 1.6rem;
-    color: #9ec23c;
 }
 
-.navbar ul {
-    list-style: none;
+.brand img {
+    width: 25px;
+    vertical-align: middle;
 }
 
-.menu-hamburger img {
-    width: 40px;
+.brand a {
+    font-size: 1.3rem;
 }
 
-.hidden-menu {
-    height: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #316456;
-    transition: height 0.3s;
-    overflow: hidden;
-}
-
-.hidden-menu ul {
-    list-style: none;
-}
-
-.hidden-menu a {
+.nav li  {
+    display: inline;
     text-decoration: none;
-    color: #fff;
-    font-size: 1.5rem;
+    margin-left: 15px;
 }
 
-.show-menu {
-    display: flex;
-    height: calc(50vh - 65px);
+.form fieldset{
+    padding: 10px;
 }
 
-
-.container.form {
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    padding: 20px 10px;
-    background-color: #f5ffbf;
-    height: calc(100vh - 65px);
-}
-
-.container.form label {
+.form-label {
     display: block;
+    margin: 15px 0;
+}
+
+.form-label.r {
+    margin: 0;
+    margin-left: 15px;
+}
+
+.form-label span {
+    display: inline-block;
     margin-bottom: 15px;
 }
 
-.input-title {
+.form-input {
     display: block;
-}
-
-.input-title+input {
     width: 100%;
-    padding: 10px;
+    padding: 10px 5px;
 }
 
-.container.form label+input {
-    background-color: #0A2740;
-    color: #9ec23c;
+.form-textarea {
+    display:block;
+    width: 100%;
+    padding: 10px 5px;
+}
+
+.button {
+    display:inline-block ;
+    width: fit-content;
+    padding: 10px;
+    background-color: #077BFF;
+    color: #fff;
     border: none;
-    padding: 10px;
-    font-size: 1.2rem;
-}
-
-.container.task {
-    padding: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    
 }
 
 .task_card {
-    border: #9ec23c 1px solid;
-    background-color: #316456;
-    border-radius: 3px;
+    min-height: 150px;
+    margin: 15px 0;
     padding: 10px;
-    margin-bottom: 15px;
-}
-
-.task_date {
-    color: #ecfd00;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    background-color: #F7F7F9;
 }
 
 .task_title {
-    color: #fff;
-    padding-bottom: 5px;
+    margin: 5px 0 10px 0;
 }
 
 .task_description {
-    padding-top: 10px;
-    color: #f5ffbf;
+    margin-bottom: 15px;
 }
 
-.new_task_button {
-    width: fit-content;
-    background-color: #0A2740;
-    color: #9ec23c;
+.task_options {
+    display: flex;
+    justify-content: end;
+    list-style: none;
+}
+
+.update_task, .delete_task {
+   display:inline-block ;
+   margin-left: 10px;
     padding: 10px;
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    display: block;
+    background-color: #077BFF;
+    color: #fff;
+    border: none;
+    font-weight: bold;
     text-decoration: none;
 }
 
-.link {
-    text-decoration: none;
-    color: #ecfd00;
+.update_task, .delete_task img {
+    vertical-align: middle;
+}
+
+.yellow {
+    background-color: #F6C011;
+}
+.red {
+    background-color: #DE4E45;
+}
+
+.confirmation-box {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-width: 180px;
+    height: 400px;
+    margin: auto;
+}
+
+.confirmation-box span {
+    margin-bottom: 15px;
+}
+
+.not-found {
+    margin-top: 50%;
+    text-align: center;
+    vertical-align: middle;
 }

@@ -1,16 +1,17 @@
-<div class="container form">
-    <form action="/user/login_submit" method="POST">
-        <?php check_errors() ?>
-        <label for="email">
-            <span class="input-title">E-mail:</span>
-            <input type="email" name="email" id="email">
+<form action="/user/login_submit" method="POST" class="form">
+    <fieldset>
+        <legend>Entrar</legend>
+
+        <label class="form-label">
+            <span>E-mail:</span>
+            <input type="email" class="form-input" name="email" placeholder="maria@email.exemplo">
         </label>
 
-        <label for="password">
-            <span class="input-title">Senha:</span>
-            <input type="password" name="password" id="password">
+        <label class="form-label">
+            <span>Senha:</span>
+            <input type="password" class="form-input" name="password">
         </label>
 
-        <input type="submit" value="Entrar">
-    </form>
-</div>
+        <input type="submit" class="button" value="Entrar">
+    </fieldset>
+</form>

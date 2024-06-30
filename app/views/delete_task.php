@@ -1,7 +1,7 @@
-<div class="container">
-    <span>Deseja deletar a Tarefa</span>
+<div class="confirmation-box">
+    <span>Deseja deletar a Tarefa ?</span>
     <div>
-        <a href="/" class="link">Cancelar</a>
-        <a href="/task/delete_task_confirm/<?= $data["id"] ?>" class="link">Deletar</a>
+        <a href="/" class="button yellow">Cancelar</a>
+        <a href="/task/delete_task_confirm/<?= $data["id"] ?>" class="button red">Deletar</a>
     </div>
 </div>

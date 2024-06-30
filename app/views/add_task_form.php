@@ -1,30 +1,29 @@
-<div class="container form">
-    <form action="/task/add_task_submit" method="post">
-
-        <?php check_errors() ?>
+<form action="/task/add_task_submit" method="POST" class="form">
+    <fieldset>
+        <legend>Adicionar Tarefa</legend>
 
         <input type="hidden" name="user_id" value="<?= $_SESSION["user_id"] ?>">
 
-        <label for="task_name">
-            <span>Título:</span>
-            <input type="text" name="task_name" id="task_name">
+        <label class="form-label">
+            <span>Nome:</span>
+            <input type="text" class="form-input" name="task_name" placeholder="Ir ao mercado">
         </label>
 
-        <label for="task_description">
+        <label class="form-label">
             <span>Descrição:</span>
-            <textarea name="task_description" id="task_description"></textarea>
+            <textarea class="form-textarea" name="task_description" rows="5" placeholder="Ir ao mercado para fazer as compras do mês."></textarea>
         </label>
 
-        <label for="task_date">
+        <label class="form-label">
             <span>Data:</span>
-            <input type="date" name="task_date" id="taskt_date" placeholder="00-00-00 00:00">
+            <input type="date" class="form-input" name="task_date">
         </label>
 
-        <label for="task_hour">
+        <label class="form-label">
             <span>Hora:</span>
-            <input type="time" name="task_hour" id="task_hour">
+            <input type="time" class="form-input" name="task_hour">
         </label>
 
-        <input type="submit" value="Registrar">
-    </form>
-</div>
+        <input type="submit" class="button" value="Salvar">
+    </fieldset>
+</form>

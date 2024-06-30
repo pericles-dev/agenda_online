@@ -1,30 +1,29 @@
-<div class="container form">
-    <form action="/task/edit_task_submit" method="post">
-
-        <?php check_errors() ?>
+<form action="/task/edit_task_submit" method="POST" class="form">
+    <fieldset>
+        <legend>Editar Tarefa</legend>
 
         <input type="hidden" name="id" value="<?= $data["id"] ?>">
 
-        <label for="task_name">
-            <span>Título:</span>
-            <input type="text" name="task_name" id="task_name" value="<?= $data["task_name"] ?>">
+        <label class="form-label">
+            <span>Nome:</span>
+            <input type="text" class="form-input" name="task_name" placeholder="Ir ao mercado" value="<?= $data["task_name"] ?>">
         </label>
 
-        <label for="task_description">
+        <label class="form-label">
             <span>Descrição:</span>
-            <textarea name="task_description" id="task_description"><?= $data["task_description"] ?></textarea>
+            <textarea class="form-textarea" name="task_description" rows="10" placeholder="Ir ao mercado para fazer as compras do mês."><?= $data["task_description"] ?></textarea>
         </label>
 
-        <label for="task_date">
+        <label class="form-label">
             <span>Data:</span>
-            <input type="date" name="task_date" id="taskt_date" placeholder="00-00-00 00:00" value="<?= $data["task_date"] ?>">
+            <input type="date" class="form-input" name="task_date" value="<?= $data["task_date"] ?>">
         </label>
 
-        <label for="task_hour">
+        <label class="form-label">
             <span>Hora:</span>
-            <input type="time" name="task_hour" id="task_hour" value="<?= $data["task_hour"] ?>">
+            <input type="time" class="form-input" name="task_hour" value="<?= $data["task_hour"] ?>">
         </label>
 
-        <input type="submit" value="Editar">
-    </form>
-</div>
+        <input type="submit" class="button" value="Salvar">
+    </fieldset>
+</form>
