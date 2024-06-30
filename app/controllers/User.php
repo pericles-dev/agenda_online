@@ -111,4 +111,17 @@ class User extends BaseController
         redirect("/user/login", "Usuário criado com sucesso.");
     }
 
+    public function logout()
+    {
+        $this->view("layouts/header_template");
+        $this->view("logout");
+        $this->view("layouts/footer_template");
+    }
+
+    public function logout_submit()
+    {
+        session_destroy();
+
+        redirect("/", "");
+    }
 }

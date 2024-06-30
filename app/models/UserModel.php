@@ -41,4 +41,14 @@ class UserModel
         }
 
     }
+
+    // public function delete_user(Database $connection, $params)
+    // {
+    //     $sql = "DELETE FROM users WHERE id = ?";
+
+    //     $database = $connection->create_connection();
+    //     $stmt = $database->prepare($sql);
+    //     $stmt->bindParam(1, $params["user_id"]);
+    //     $stmt->execute();
+    // }
 }

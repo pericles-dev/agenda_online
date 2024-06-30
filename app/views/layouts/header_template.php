@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda online</title>
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/styles.css">
 </head>
 
@@ -18,12 +17,12 @@
             </div>
             <nav>
                 <ul class="nav">
-                    <?php if (!isset($_SESSION["user_id"])): ?>
+                    <?php if (!isset($_SESSION["user_id"])) : ?>
                         <li><a href="/user/login">Entrar</a></li>
                         <li><a href="/user/register">Registrar</a></li>
-                    <?php else: ?>
+                    <?php else : ?>
                         <li><a href="/user/profile">Perfil</a></li>
-                    <li><a href="/user/logout">Sair</a></li>
+                        <li><a href="/user/logout/<?= $_SESSION["user_id"] ?>">Sair</a></li>
                     <?php endif ?>
                 </ul>
             </nav>
