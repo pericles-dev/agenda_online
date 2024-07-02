@@ -1,3 +1,4 @@
+<?= get_message("successful_registration")?>
 <form action="/user/login_submit" method="POST" class="form">
     <fieldset>
         <legend>Entrar</legend>

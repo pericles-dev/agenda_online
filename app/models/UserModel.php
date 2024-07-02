@@ -42,6 +42,22 @@ class UserModel
 
     }
 
+
+    public function select_user_data(Database $connection, $params)
+    {
+        $sql = "SELECT id, first_name, last_name, username, birthdate, gender, email, password FROM users WHERE id = ?";
+
+        $database = $connection->create_connection();
+        $stmt = $database->prepare($sql);
+        $stmt->bindParam(1, $params["user_id"]);
+        $stmt->execute();
+
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $data;
+
+    }
+
     // public function delete_user(Database $connection, $params)
     // {
     //     $sql = "DELETE FROM users WHERE id = ?";

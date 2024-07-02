@@ -21,7 +21,7 @@
                         <li><a href="/user/login">Entrar</a></li>
                         <li><a href="/user/register">Registrar</a></li>
                     <?php else : ?>
-                        <li><a href="/user/profile">Perfil</a></li>
+                        <li><a href="/user/profile_settings"><?= $_SESSION["username"] ?></a></li>
                         <li><a href="/user/logout/<?= $_SESSION["user_id"] ?>">Sair</a></li>
                     <?php endif ?>
                 </ul>

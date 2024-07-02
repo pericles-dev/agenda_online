@@ -6,7 +6,7 @@
     <?php if (count($data) > 0) : ?>
         <?php foreach ($data as $task) : ?>
             <div class="task_card">
-                <span class="task_date"><?= $task["task_date"] ?></span>
+                <span class="task_date"><?= $task["task_date"] ?> - <?= $task["task_hour"] ?></span>
                 <h2 class="task_title"><?= $task["task_name"] ?></h2>
                 <p class="task_description"><?= $task["task_description"] ?></p>
 

@@ -1,21 +1,24 @@
 <?php
 
-function redirect($location, $message)
-{
 
-    $_SESSION["validation_errors"][] = $message;
-    header("Location: $location");
+function set_message($name, $message, $type, $location = null)
+{
+    $notfication = "<span class='$type'>$message<span>";
+
+    $_SESSION["validate_notifications"][$name] = $notfication;
+
+    if (isset($location)) {
+        header("Location: $location");
+    }
 }
 
-function check_errors()
+function get_message($name)
 {
-    if (isset($_SESSION["validation_errors"])) {
+    $error = $_SESSION["validate_notifications"][$name];
 
-        foreach ($_SESSION["validation_errors"] as  $erro) {
-            echo "<span style=color:orange>$erro</span>";
-        }
-
-        unset($_SESSION["validation_errors"]);
+    if (isset($error)) {
+        unset($_SESSION["validate_notifications"][$name]);
+        return $error;
     }
 }
 

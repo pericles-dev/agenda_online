@@ -68,27 +68,29 @@ class User extends BaseController
         $confirm_password = $_POST["confirm_password"];
 
         if (!(strlen($first_name) >= 3)) {
-            redirect("/user/register", "O nome deve ter a partir de 3 caracteres.");
+            set_message("first_name", "O nome deve ter a partir de 3 caracteres.", "error", "/user/register");
             return;
         }
 
         if (!(strlen($last_name) >= 3)) {
-            redirect("/user/register", "O sobrenome deve ter a partir de 3 caracteres.");
+            set_message("last_name", "O sobrenome deve ter a partir de 3 caracteres.", "error", "/user/register");
             return;
         }
 
         if (!(strlen($username) >= 3)) {
-            redirect("/user/register", "O nome de usuário deve ter a partir de 3 caracteres.");
+            set_message("username", "O nome de usuário deve ter a partir de 3 caracteres.", "error", "/user/register");
             return;
         }
 
         if ($email != $confirm_email) {
-            redirect("/user/register", "Os E-mails não são iguais.");
+            set_message("email", "Os E-mails não são iguais.", "error");
+            set_message("confirm_email", "Os E-mails não são iguais.", " error", "/user/register");
             return;
         }
 
         if ($password != $confirm_password) {
-            redirect("/user/register", "As Senhas não são iguais.");
+            set_message("password", "As Senhas não são iguais.", "error");
+            set_message("confirm_password", "As senhas não são iguais.", " error", "/user/register");
             return;
         }
 
@@ -102,13 +104,12 @@ class User extends BaseController
             "password" => password_hash($password, PASSWORD_DEFAULT)
         ];
 
-
         $connection = new Database();
 
         $model = new UserModel;
         $model->create_user($connection, $params);
 
-        redirect("/user/login", "Usuário criado com sucesso.");
+        set_message("successful_registration", "Usuário criado com sucesso.", "success", "/user/login");
     }
 
     public function logout()
@@ -123,5 +124,20 @@ class User extends BaseController
         session_destroy();
 
         redirect("/", "");
+    }
+
+    public function profile_settings()
+    {
+
+        $params = ["user_id" => $_SESSION["user_id"]];
+
+        $connection = new Database();
+
+        $model = new UserModel;
+        $data = $model->select_user_data($connection, $params);
+
+        $this->view("layouts/header_template");
+        $this->view("profile_settings", $data);
+        $this->view("layouts/footer_template");
     }
 }
